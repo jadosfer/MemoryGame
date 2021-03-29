@@ -138,6 +138,8 @@ document.addEventListener('DOMContentLoaded', () => { //evento que se dispara an
       }
       else if (cardsChosen[0] === cardsChosen[1]) {
         tries +=1;
+        var audioYes = new Audio('sounds/yes.mp3');
+        audioYes.play();
         document.getElementById("message").innerHTML = 'Encontraste una coincidencia! Aplausos, cara de cuis! Ya vas ' + Math.round(showTime(startTime)) + ' segundos';
         cards[optionOneId].setAttribute('src', 'images/white.png')
         cards[optionTwoId].setAttribute('src', 'images/white.png')
@@ -146,6 +148,8 @@ document.addEventListener('DOMContentLoaded', () => { //evento que se dispara an
         cardsWon.push(cardsChosen)
       } else {
         tries +=1;
+        var audioNo = new Audio('sounds/no.mp3');
+        audioNo.play();
         cards[optionOneId].setAttribute('src', 'images/bg.png')
         cards[optionTwoId].setAttribute('src', 'images/bg.png')
         document.getElementById("message").innerHTML = ' No coinciden. A seguir intentando! Ya vas ' + Math.round(showTime(startTime)) + ' segundos';
@@ -156,6 +160,8 @@ document.addEventListener('DOMContentLoaded', () => { //evento que se dispara an
       cardsChosenId = []
       //resultDisplay.textContent = cardsWon.length
       if  (cardsWon.length === cardArray.length/2) {
+        var audio = new Audio('sounds/fin.mp3');
+        audio.play();
         document.getElementById("message").innerHTML = ' Por fin, las encontraste a todas. Tardaste ' + Math.round(showTime(startTime)) + " segundos!";
       }
     }

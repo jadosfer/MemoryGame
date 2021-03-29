@@ -1,59 +1,102 @@
 //https://github.com/SamiurRahmanMukul/building-javascript-7-games
+//funcion para el reloj
+var startTime = new Date();
 
+function showTime(inicialTime){
+  
+  var nowTime = new Date();
+  var outTime = (nowTime-inicialTime)/1000;
+  return outTime  
+  //document.getElementById("hms").innerHTML = hAux + ":" + mAux + ":" + sAux; 
+  
+  }
+  
+  
+  //setInterval(showTime(),1000);
+
+window.onload = init;
+function init(){
+       
+    
+  }
 document.addEventListener('DOMContentLoaded', () => { //evento que se dispara antes de cargar la pagina
+
+    //document.getElementById("clock").innerHTML="00:00:00";
+    
+    
     //card options    
     const cardArray = [
-      {
-        // name: 'fries',
-        // img: 'images/fries.png'
+      {      
+        name: 'hotdog',
+        img: 'images/hotdog.png'
+      },   
+      {      
+        name: 'macri',
+        img: 'images/macri.jpg'
+      },   
+      {      
         name: 'forniteLogo',
         img: 'images/forniteLogo.jpg'
       },
-      {
+      {      
+        name: 'hotdog',
+        img: 'images/hotdog.png'
+      },      
+      {      
         name: 'cheeseburger',
         img: 'images/cheeseburger.png'
+      },   
+      {      
+        name: 'macri',
+        img: 'images/macri.jpg'
+      },      
+      {      
+        name: 'cheeseburger',
+        img: 'images/cheeseburger.png'
+      },  
+      {
+        name: 'santi',
+        img: 'images/santi.jpg'
       },
       {
-        name: 'ice-cream',
-        img: 'images/ice-cream.png'
+        name: 'nerf',
+        img: 'images/nerf.png'
       },
       {
         name: 'pizza',
         img: 'images/pizza.png'
       },
       {
-        name: 'milkshake',
-        img: 'images/milkshake.png'
+        name: 'rocio',
+        img: 'images/rocio.jpg'
       },
       {
-        name: 'hotdog',
-        img: 'images/hotdog.png'
+        name: 'marco',
+        img: 'images/marco.jpg'
       },
-      {
-         // name: 'fries',
-        // img: 'images/fries.png'
+      {       
         name: 'forniteLogo',
         img: 'images/forniteLogo.jpg'
       },
       {
-        name: 'cheeseburger',
-        img: 'images/cheeseburger.png'
+        name: 'santi',
+        img: 'images/santi.jpg'
       },
       {
-        name: 'ice-cream',
-        img: 'images/ice-cream.png'
+        name: 'nerf',
+        img: 'images/nerf.png'
       },
       {
         name: 'pizza',
         img: 'images/pizza.png'
       },
       {
-        name: 'milkshake',
-        img: 'images/milkshake.png'
+        name: 'rocio',
+        img: 'images/rocio.jpg'
       },
       {
-        name: 'hotdog',
-        img: 'images/hotdog.png'
+        name: 'marco',
+        img: 'images/marco.jpg'
       }
     ]
     
@@ -61,7 +104,8 @@ document.addEventListener('DOMContentLoaded', () => { //evento que se dispara an
     shuffle(cardArray);
 
     const grid = document.querySelector('.grid')
-    const resultDisplay = document.querySelector('#result')
+    //const resultDisplay = document.querySelector('#result')   
+    var tries = 0; 
     let cardsChosen = []
     let cardsChosenId = []
     let cardsWon = []
@@ -70,10 +114,12 @@ document.addEventListener('DOMContentLoaded', () => { //evento que se dispara an
     function createBoard() {
       for (let i = 0; i < cardArray.length; i++) {
         const card = document.createElement('img')
-        card.setAttribute('src', 'images/blank.png')
+        card.setAttribute('src', 'images/bg.png')
         card.setAttribute('data-id', i)
         card.addEventListener('click', flipCard)
         grid.appendChild(card)
+        document.getElementById("message").innerHTML = 'Elegí dos cartas, tienen que coincidir!'
+        document.getElementById("result").innerHTML = '0';
       }
     }
   
@@ -84,27 +130,33 @@ document.addEventListener('DOMContentLoaded', () => { //evento que se dispara an
       const optionTwoId = cardsChosenId[1]
       
       if(optionOneId == optionTwoId) {
-        cards[optionOneId].setAttribute('src', 'images/blank.png')
-        cards[optionTwoId].setAttribute('src', 'images/blank.png')
-        alert('You have clicked the same image!')
+        tries +=1;
+        cards[optionOneId].setAttribute('src', 'images/bg.png')
+        cards[optionTwoId].setAttribute('src', 'images/bg.png')
+        document.getElementById("message").innerHTML = 'Elegiste dos veces la misma carta, huevón!! Ya vas ' + Math.round(showTime(startTime)) + ' segundos';
+        
       }
       else if (cardsChosen[0] === cardsChosen[1]) {
-        alert('You found a match')
+        tries +=1;
+        document.getElementById("message").innerHTML = 'Encontraste una coincidencia! Aplausos, cara de cuis! Ya vas ' + Math.round(showTime(startTime)) + ' segundos';
         cards[optionOneId].setAttribute('src', 'images/white.png')
         cards[optionTwoId].setAttribute('src', 'images/white.png')
         cards[optionOneId].removeEventListener('click', flipCard)
         cards[optionTwoId].removeEventListener('click', flipCard)
         cardsWon.push(cardsChosen)
       } else {
-        cards[optionOneId].setAttribute('src', 'images/blank.png')
-        cards[optionTwoId].setAttribute('src', 'images/blank.png')
-        alert('Sorry, try again')
+        tries +=1;
+        cards[optionOneId].setAttribute('src', 'images/bg.png')
+        cards[optionTwoId].setAttribute('src', 'images/bg.png')
+        document.getElementById("message").innerHTML = ' No coinciden. A seguir intentando! Ya vas ' + Math.round(showTime(startTime)) + ' segundos';
+        
       }
+      document.getElementById("result").innerHTML = " " + tries;
       cardsChosen = []
       cardsChosenId = []
-      resultDisplay.textContent = cardsWon.length
+      //resultDisplay.textContent = cardsWon.length
       if  (cardsWon.length === cardArray.length/2) {
-        resultDisplay.textContent = 'Congratulations! You found them all!'
+        document.getElementById("message").innerHTML = ' Por fin, las encontraste a todas. Tardaste ' + Math.round(showTime(startTime)) + " segundos!";
       }
     }
   
@@ -115,7 +167,7 @@ document.addEventListener('DOMContentLoaded', () => { //evento que se dispara an
       cardsChosenId.push(cardId)
       this.setAttribute('src', cardArray[cardId].img)
       if (cardsChosen.length ===2) {
-        setTimeout(checkForMatch, 500)
+        setTimeout(checkForMatch, 400)
       }
     }
     //función más completa para random sorting del array
@@ -137,6 +189,7 @@ document.addEventListener('DOMContentLoaded', () => { //evento que se dispara an
       
         return array;
       }
-  
+
     createBoard()
+    
   })

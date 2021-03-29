@@ -1,6 +1,19 @@
 .grid {
     display: flex;
     flex-wrap: wrap;
-    width: 400px;
+    width: 600px;
     height: 300px;
   }
+
+  .topcorner{
+    position:right;
+    top:10;
+    right:10;
+    color: black;
+ }
+ #message,  #result{
+  font-family:  Sans-serif ;
+ }
+ h3 {
+  font-family:  Sans-serif ;
+ }

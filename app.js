@@ -99,7 +99,12 @@ document.addEventListener('DOMContentLoaded', () => { //evento que se dispara an
         img: 'images/marco.jpg'
       }
     ]
+
+    //volume    
+    let volume = true;
     
+    document.getElementById('volumeImg').addEventListener('click', clickVolume);
+
     //cardArray.sort(() => 0.5 - Math.random());
     shuffle(cardArray);
 
@@ -139,7 +144,9 @@ document.addEventListener('DOMContentLoaded', () => { //evento que se dispara an
       else if (cardsChosen[0] === cardsChosen[1]) {
         tries +=1;
         var audioYes = new Audio('sounds/yes.mp3');
-        audioYes.play();
+        if (volume) {
+          audioYes.play();
+        }
         document.getElementById("message").innerHTML = 'Encontraste una coincidencia! Aplausos, cara de cuis! Ya vas ' + Math.round(showTime(startTime)) + ' segundos';
         cards[optionOneId].setAttribute('src', 'images/white.png')
         cards[optionTwoId].setAttribute('src', 'images/white.png')
@@ -149,7 +156,9 @@ document.addEventListener('DOMContentLoaded', () => { //evento que se dispara an
       } else {
         tries +=1;
         var audioNo = new Audio('sounds/no.mp3');
-        audioNo.play();
+        if (volume) {
+          audioNo.play();
+        }
         cards[optionOneId].setAttribute('src', 'images/bg.png')
         cards[optionTwoId].setAttribute('src', 'images/bg.png')
         document.getElementById("message").innerHTML = ' No coinciden. A seguir intentando! Ya vas ' + Math.round(showTime(startTime)) + ' segundos';
@@ -161,13 +170,19 @@ document.addEventListener('DOMContentLoaded', () => { //evento que se dispara an
       //resultDisplay.textContent = cardsWon.length
       if  (cardsWon.length === cardArray.length/2) {
         var audio = new Audio('sounds/fin.mp3');
-        audio.play();
+        if (volume) {
+          audio.play();
+        }
         document.getElementById("message").innerHTML = ' Por fin, las encontraste a todas. Tardaste ' + Math.round(showTime(startTime)) + " segundos!";
       }
     }
   
     //flip your card
     function flipCard() {
+      var audioClick = new Audio('sounds/click.mp3');
+      if (volume) {
+        audioClick.play()
+      }
       let cardId = this.getAttribute('data-id')
       cardsChosen.push(cardArray[cardId].name)
       cardsChosenId.push(cardId)
@@ -194,6 +209,20 @@ document.addEventListener('DOMContentLoaded', () => { //evento que se dispara an
         }
       
         return array;
+      }
+
+      function clickVolume () {
+        var audioClick = new Audio('sounds/click.mp3');      
+        audioClick.play()
+      
+        volume = !volume; 
+        //alert(volume);  
+        var image = document.getElementById('volumeImg');
+    if (volume) {
+        image.src = "images/volumeOn.png";
+    } else {
+        image.src = "images/volumeOff.png";
+    }     
       }
 
     createBoard()

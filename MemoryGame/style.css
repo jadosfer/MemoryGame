@@ -1,0 +1,27 @@
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    width: 600px;
+    height: 300px;
+  }
+
+  .topcorner{
+    position:right;
+    top:10;
+    right:10;
+    color: black;
+ }
+
+ #volumeImg {
+  position:fixed;
+  top:30px;
+  right:30px;
+  width: 60px;
+  height:60px;  
+}
+ #message,  #result{
+  font-family:  Sans-serif ;
+ }
+ h3 {
+  font-family:  Sans-serif ;
+ }

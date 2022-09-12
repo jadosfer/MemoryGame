@@ -31,8 +31,8 @@ document.addEventListener('DOMContentLoaded', () => { //evento que se dispara an
         img: 'images/hotdog.png'
       },   
       {      
-        name: 'macri',
-        img: 'images/macri.jpg'
+        name: 'doll',
+        img: 'images/doll.jpg'
       },   
       {      
         name: 'forniteLogo',
@@ -47,16 +47,16 @@ document.addEventListener('DOMContentLoaded', () => { //evento que se dispara an
         img: 'images/cheeseburger.png'
       },   
       {      
-        name: 'macri',
-        img: 'images/macri.jpg'
+        name: 'doll',
+        img: 'images/doll.jpg'
       },      
       {      
         name: 'cheeseburger',
         img: 'images/cheeseburger.png'
       },  
       {
-        name: 'santi',
-        img: 'images/santi.jpg'
+        name: 'plane',
+        img: 'images/plane.jpg'
       },
       {
         name: 'nerf',
@@ -67,12 +67,12 @@ document.addEventListener('DOMContentLoaded', () => { //evento que se dispara an
         img: 'images/pizza.png'
       },
       {
-        name: 'rocio',
-        img: 'images/rocio.jpg'
+        name: 'car',
+        img: 'images/car.jpg'
       },
       {
-        name: 'marco',
-        img: 'images/marco.jpg'
+        name: 'tank',
+        img: 'images/tank.jpg'
       },
       {       
         name: 'forniteLogo',
@@ -83,20 +83,20 @@ document.addEventListener('DOMContentLoaded', () => { //evento que se dispara an
         img: 'images/santi.jpg'
       },
       {
-        name: 'nerf',
-        img: 'images/nerf.png'
+        name: 'plane',
+        img: 'images/plane.png'
       },
       {
         name: 'pizza',
         img: 'images/pizza.png'
       },
       {
-        name: 'rocio',
-        img: 'images/rocio.jpg'
+        name: 'car',
+        img: 'images/car.jpg'
       },
       {
-        name: 'marco',
-        img: 'images/marco.jpg'
+        name: 'tank',
+        img: 'images/tank.jpg'
       }
     ]
 
